@@ -1,30 +1,35 @@
 package com.unimall.unimall.entity;
 
-public class Category {
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
-    private Integer id;
+@Entity
+@Table(name = "categories")
+public class Category {
+    @Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+    @Column
     private String name;
+    @Column
     private Integer parentId;
+    @Column
     private int status;
-    private Integer nextId;
+   
 
     public Category(String name, Integer parentId) {
         this.name = name;
         this.parentId = parentId;
-        this.id = findNextId();
+       
         this.status = 1;
 
     }
 
-    private Integer findNextId() {
-        nextId = CategoryList.getMaxId();
-        if (nextId == null) {
-            return 1;
-        } else {
-            return ++nextId;
-        }
-
-    }
+    
 
     public Category() {
 
@@ -38,14 +43,13 @@ public class Category {
         return name;
     }
 
-    public Integer getId() {
+    public long getId() {
         return id;
     }
 
     @Override
     public String toString() {
-        return "Category [id=" + id + ", name=" + name + ", parentId=" + parentId + ", status=" + status + ", nextId="
-                + nextId + "]";
+        return "Category [id=" + id + ", name=" + name + ", parentId=" + parentId + ", status=" + status + "]";
     }
 
     public void setStatus(int status) {

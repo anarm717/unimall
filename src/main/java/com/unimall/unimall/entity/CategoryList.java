@@ -150,15 +150,6 @@ public class CategoryList {
         }
     }
 
-    public static Integer getMaxId() {
-        Integer minId = null;
-        for (Category category : categoryList) {
-            if (minId == null || category.getId() > minId) {
-                minId = category.getId();
-            }
-        }
-        return minId;
-
-    }
+    
 
 }
