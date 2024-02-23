@@ -1,5 +1,8 @@
 package com.unimall.unimall.entity;
 
+
+import java.util.Iterator;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,19 +19,19 @@ public class Category {
     @Column
     private String name;
     @Column
-    private Integer parentId;
+    private Long parentId;
     @Column
     private int status;
    
 
-    public Category(String name, Integer parentId) {
+    public Category(String name, Long parentId) {
         this.name = name;
         this.parentId = parentId;
        
         this.status = 1;
 
     }
-
+   
     
 
     public Category() {
@@ -64,8 +67,8 @@ public class Category {
         this.id = id;
     }
 
-    public void setParentId(Integer parentId) {
+    public void setParentId(Long parentId) {
         this.parentId = parentId;
     }
-
+   
 }

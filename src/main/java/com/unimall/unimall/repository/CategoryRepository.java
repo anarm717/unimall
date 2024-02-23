@@ -12,6 +12,6 @@ public interface CategoryRepository extends JpaRepository<Category, Long> {
    
     @Query("Select c from Category c")
     List<Category> getAll();
-
+    
     
 }
