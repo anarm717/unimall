@@ -11,4 +11,7 @@ public interface CategoryService {
     Category add(CategoryInputModel categoryInputModel);
     String deleteById(Long id);
     Object updateById(Long id, String newName);
+    Object deactivateById(Long id);
+    Object activateById(Long id);
+
 }

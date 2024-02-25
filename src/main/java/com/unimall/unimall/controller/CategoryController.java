@@ -56,19 +56,17 @@ public class CategoryController {
     }
     @Operation(summary = "deactivate Category", description = "there you can deactivate category", tags = {"Category"})   
     @PutMapping("deactivate/{id}")
-       public void deactivateById(@PathVariable Integer id) {
-        //    CategoryList.getAll();
-        // CategoryList.deactivateById(id);
+       public Object deactivateById(@PathVariable Long id) {
+        
+        return categoryService.deactivateById(id);
            
           
        }
        @Operation(summary = "activate Category", description = "there you can activate category", tags = {"Category"}) 
        @PutMapping("activate/{id}")
-        public void activateById(@PathVariable Integer id) {
-        //   CategoryList.getAll();
-        //   CategoryList.activateById(id);
-            
-           
+        public Object activateById(@PathVariable Long id) {
+        
+            return categoryService.activateById(id);          
         }
     
 }

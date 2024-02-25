@@ -6,13 +6,13 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import com.unimall.unimall.entity.Category;
+import com.unimall.unimall.entity.Product;
 
 @Repository
-public interface CategoryRepository extends JpaRepository<Category, Long> {
+public interface ProductRepository extends JpaRepository<Product, Long> {
    
-    @Query("Select c from Category c")
-    List<Category> getAll();
+    @Query("Select p from Product p")
+    List<Product> getProducts();
     
     
 }

@@ -1,7 +1,6 @@
 package com.unimall.unimall.entity;
 
 
-import java.util.Iterator;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

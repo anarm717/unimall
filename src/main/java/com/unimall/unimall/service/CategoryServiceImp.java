@@ -1,8 +1,6 @@
 package com.unimall.unimall.service;
 
-import java.util.Iterator;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -45,16 +43,7 @@ public class CategoryServiceImp implements CategoryService{
        
     }
 
-  /*   public Category deleteById(Long id) {
-        Optional<Category> optionalCategory = categoryRepository.findById(id);
-        if (optionalCategory.isPresent()) {
-            Category category = optionalCategory.get();
-            categoryRepository.delete(category);
-            return category;
-        } else {
-            throw new RuntimeException("Category not found with id: " + id);
-        }
-    }*/
+  
 
    
 
@@ -68,16 +57,27 @@ public class CategoryServiceImp implements CategoryService{
         }
     }
 
-    
-
- /*   @Override
-    public Category findById(Long id) {
-        Optional<Category> optionalCategory = categoryRepository.findById(id);
-        if (optionalCategory.isPresent()) {
-            return optionalCategory.get();
+    public Object deactivateById(Long id){
+        Category category = categoryRepository.findById(id).orElse(null);
+        if (category != null) {
+            category.setStatus(0);
+            return categoryRepository.save(category);
         } else {
-            throw new RuntimeException("Category not found with id: " + id);
+            return "id not found";
         }
-    }*/
+
+    }
+    public Object activateById(Long id){
+        Category category = categoryRepository.findById(id).orElse(null);
+        if (category != null) {
+            category.setStatus(1);
+            return categoryRepository.save(category);
+        } else {
+            return "id not found";
+        }
+
+    }
+
+
 
 }
