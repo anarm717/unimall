@@ -1,5 +1,7 @@
 package com.unimall.unimall.entity;
 
+import com.unimall.unimall.model.ProductInputModel;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,16 +18,40 @@ public class Product {
     @Column
     private String name;
     @Column
-    private Long parentId;
+    private String description;
     @Column
     private int status;
-   
-    public Product(String name, Long parentId) {
-        this.name = name;
-        this.parentId=parentId;
-        this.status =1;
-    }
+    @Column
+    private double price;
+    @Column
+    private String category;
 
+
+    public Product(ProductInputModel productInputModel) {
+        this.name = productInputModel.productName();
+        this.description=productInputModel.description();
+        this.status =1;
+        this.price=productInputModel.price();
+        this.category=productInputModel.category();
+    }
+    public Product() {
+    }
+    
+    
+    
+    
+    public void setPrice(double price) {
+        this.price = price;
+    }
+    public void setCategory(String category) {
+        this.category = category;
+    }
+    public double getPrice() {
+        return price;
+    }
+    public String getCategory() {
+        return category;
+    }
     public Long getId() {
         return id;
     }
@@ -42,12 +68,12 @@ public class Product {
         this.name = name;
     }
 
-    public Long getParentId() {
-        return parentId;
+    public String getDescription() {
+        return description;
     }
 
-    public void setParentId(Long parentId) {
-        this.parentId = parentId;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public int getStatus() {

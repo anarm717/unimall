@@ -6,6 +6,7 @@ import java.util.List;
 import com.unimall.unimall.entity.Category;
 import com.unimall.unimall.model.CategoryInputModel;
 
+
 public interface CategoryService {
     List<Category> getAll();
     Category add(CategoryInputModel categoryInputModel);

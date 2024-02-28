@@ -16,41 +16,49 @@ import com.unimall.unimall.entity.Product;
 import com.unimall.unimall.model.ProductInputModel;
 import com.unimall.unimall.service.ProductService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 
 @RestController
 @RequestMapping("/product")
-
-
+@Tag(name = "Product", description = "the Product api") 
 public class ProductController {
-    
     @Autowired 
     ProductService productService;
 
-
-    @GetMapping()
+    @Operation(summary = "get all Products", description = "there you can get all products", tags = {"Product"})
+    @GetMapping
     public List<Product> getProducts(){
         List<Product> productsList = productService.getProducts();
         return productsList;
     }
-    @PostMapping()
-    public static Object addProduct(@RequestBody ProductInputModel productInputModel){
-        ProductService.addProduct(productInputModel);
+    @Operation(summary = "Add  Product", description = "there you can add product", tags = {"Product"})
+    @PostMapping
+    public Object addProduct(@RequestBody ProductInputModel productInputModel){
+       productService.addProduct(productInputModel);
         return "Product was successfully added!";
     }
-
-    @PutMapping()
+    @Operation(summary = "Activate  Product", description = "there you can activate product", tags = {"Product"})
+    @PutMapping("activate/{id}")
     public Object activateProduct(@PathVariable Long id){
         return productService.activateProduct(id);
     }
-    @PutMapping()
+    
+    @Operation(summary = "Deactivate  Product", description = "there you can deactivate product", tags = {"Product"})
+    @PutMapping("deactivate/{id}")
     public Object deactivateProduct(@PathVariable Long id){
         return productService.deactivateProduct(id);
     }
-    @DeleteMapping()
+   
+    @Operation(summary = "Delete  Product", description = "there you can delete product", tags = {"Product"})
+    @DeleteMapping("/{id}")
     public Object deleteProduct(@PathVariable Long id){
         return productService.deleteProduct(id);
     }
-    @PutMapping()
+    
+    @Operation(summary = "Update  Product", description = "there you can update product", tags = {"Product"})
+    @PutMapping("/{id}")
     public Object updateProduct(@PathVariable Long id, @RequestBody String newName){
         return productService.updateProduct(newName, id);
     }

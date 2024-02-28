@@ -3,22 +3,27 @@ package com.unimall.unimall.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.unimall.unimall.entity.Product;
 import com.unimall.unimall.model.ProductInputModel;
 import com.unimall.unimall.repository.ProductRepository;
 
+@Service
 public class ProductServiceImpl implements ProductService {
     
     @Autowired
     ProductRepository productRepository;
 
-    public static Object addProduct(ProductInputModel productInputModel){
-        Product product = new Product(productInputModel.productName(),productInputModel.parentId());
+    @Override
+    public  Object addProduct(ProductInputModel productInputModel){
+        Product product = new Product(productInputModel);
         product.setName(productInputModel.productName());
-        product.setParentId(productInputModel.parentId());
+        product.setDescription(productInputModel.description());
         product.setStatus(1);
-        return "Category successfully added!";
+        product.setDescription(productInputModel.description());
+        product.setCategory(productInputModel.category());
+        return productRepository.save(product);
     }
     @Override
     public List<Product> getProducts(){
@@ -60,7 +65,7 @@ public class ProductServiceImpl implements ProductService {
             product.setName(newName);
         return productRepository.save(product);
         }else{
-            return "Product with an id of"+id+" could not be found!";
+            return "Product with an id of "+id+" could not be found!";
         }
     }
 
