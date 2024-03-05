@@ -6,10 +6,11 @@
 <body>
     <h1>Unimall APP</h1>
     <h1>Welcome!!!</h1>
+    <a href="/adminpanel/add-product">Add product </a>
     <div>
         <div th:each="product: ${products}">
-            <img th:src="${product.image}" alt="..."> 
-            <h5 th:text="${product}"></h5>
+            <img height="100px" th:src="${product.image}" alt="..."> 
+            <h5 th:text="${product.name}"></h5>
             <p th:text="${product.description}"></p>
             </div>
         </div>
