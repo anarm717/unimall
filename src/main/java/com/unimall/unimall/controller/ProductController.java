@@ -37,7 +37,7 @@ public class ProductController {
     @PostMapping
     public Object addProduct(@RequestBody ProductInputModel productInputModel){
        productService.addProduct(productInputModel);
-        return "Product was successfully added!";
+       return "Product was successfully added!";
     }
     @Operation(summary = "Activate  Product", description = "there you can activate product", tags = {"Product"})
     @PutMapping("activate/{id}")

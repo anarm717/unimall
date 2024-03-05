@@ -24,8 +24,9 @@ public class Product {
     @Column
     private double price;
     @Column
-    private String category;
-
+    private Long category;
+    @Column
+    private String image;
 
     public Product(ProductInputModel productInputModel) {
         this.name = productInputModel.productName();
@@ -33,6 +34,7 @@ public class Product {
         this.status =1;
         this.price=productInputModel.price();
         this.category=productInputModel.category();
+        this.image=productInputModel.image();
     }
     public Product() {
     }
@@ -43,13 +45,13 @@ public class Product {
     public void setPrice(double price) {
         this.price = price;
     }
-    public void setCategory(String category) {
+    public void setCategory(Long category) {
         this.category = category;
     }
     public double getPrice() {
         return price;
     }
-    public String getCategory() {
+    public Long getCategory() {
         return category;
     }
     public Long getId() {
@@ -86,7 +88,10 @@ public class Product {
     @Override
     public String toString() {
         return "Product [id=" + id + ", name=" + name + ", description=" + description + ", status=" + status
-                + ", price=" + price + ", category=" + category + "]";
+                + ", price=" + price + ", category=" + category + ", image= "+image+"]";
+    }
+    public String getImage() {
+        return image;
     }
     
 

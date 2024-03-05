@@ -19,8 +19,8 @@ public class WebController {
     @GetMapping("/home")
 	public String home(Model model) {
 		List<Product> productList= productService.getProducts();
-		model.addAttribute("name", "Anar");
-		model.addAttribute("products",productList.get(0));
+		model.addAttribute("name", "Nijat");
+		model.addAttribute("products",productList);
 		return "home";
 	}
 }
