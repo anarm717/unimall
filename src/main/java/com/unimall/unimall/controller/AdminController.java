@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.UUID;
 
 
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.view.RedirectView;
 
+import com.unimall.unimall.entity.Product;
 import com.unimall.unimall.model.ProductInputModel;
 import com.unimall.unimall.service.ProductService;
 @Controller
@@ -31,8 +33,21 @@ public class AdminController {
 
     @GetMapping("/adminpanel/add-product")
 	public String addProduct(Model model) {
-		return "add_product";
+		return "adminpanel/add_product";
 	}
+
+    @GetMapping("/adminpanel/home")
+	public String home(Model model) {
+		return "adminpanel/home";
+	}
+
+    @GetMapping("/adminpanel/products")
+	public String products(Model model) {
+        List<Product> productList= productService.getProducts();
+        model.addAttribute("products",productList);
+		return "adminpanel/products";
+	}
+
     @PostMapping("/adminpanel/add-product")
 	public RedirectView createProduct(@RequestParam String product_name,String product_description,Long categories,@RequestParam MultipartFile product_image, Model model) {
         UUID uuid = UUID.randomUUID();
