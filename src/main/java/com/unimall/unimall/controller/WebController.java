@@ -21,7 +21,7 @@ public class WebController {
 		List<Product> productList= productService.getProducts();
 		model.addAttribute("name", "Nijat");
 		model.addAttribute("products",productList);
-		return "home";
+		return "index";
 	}
 }
 
